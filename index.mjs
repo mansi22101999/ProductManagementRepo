@@ -14,6 +14,7 @@ export const handler = async (event) => {
     switch (event.httpMethod) {
       case 'POST': {
         let body;
+        
 
 try {
   body = typeof event.body === 'string' ? JSON.parse(event.body) : event.body || {};
