@@ -1,12 +1,10 @@
-import { DynamoDBClient, GetItemCommand,
-  PutItemCommand,
-  DeleteItemCommand,
-  UpdateItemCommand,
- } from '@aws-sdk/client-dynamodb';
+
+ const { DynamoDBClient, GetItemCommand, PutItemCommand,DeleteItemCommand,
+  UpdateItemCommand, } = require('@aws-sdk/client-dynamodb');
 
 const client = new DynamoDBClient({ region: 'us-east-1' });
 
-export const handler = async (event) => {
+module.exports.handler = async (event) => {
   const tableName = 'Products';
   let response;
 
@@ -14,7 +12,7 @@ export const handler = async (event) => {
     switch (event.httpMethod) {
       case 'POST': {
         let body;
-        
+
 
 try {
   body = typeof event.body === 'string' ? JSON.parse(event.body) : event.body || {};
